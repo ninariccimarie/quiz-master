@@ -9,6 +9,9 @@ A web application to test your knowledge on various topics. Users may manage que
 - [Ruby v2.4.1](https://www.ruby-lang.org/en/)
 - [Ruby on Rails v5.1.2](http://rubyonrails.org/)
 
+<b>Testing</b>
+- [RSpec v3.6.0](https://github.com/rspec/rspec-rails)
+
 
 ## Getting Started
 
