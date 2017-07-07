@@ -11,7 +11,10 @@ A web application to test your knowledge on various topics. Users may manage que
 
 <b>Testing</b>
 - [RSpec v3.6.0](https://github.com/rspec/rspec-rails)
-
+- [Shoulda](https://github.com/thoughtbot/shoulda)
+- [FactoryGirl for Rails](https://github.com/thoughtbot/factory_girl_rails)
+- [Faker](https://github.com/stympy/faker)
+- [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner)
 
 ## Getting Started
 
