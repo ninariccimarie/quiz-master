@@ -16,12 +16,6 @@ ActiveRecord::Schema.define(version: 20170706044520) do
     t.text "question"
     t.string "answer"
     t.integer "difficulty_level"
-    t.integer "quiz_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "quizzes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
