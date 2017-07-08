@@ -3,7 +3,11 @@ class QuestionsController < ApplicationController
 
     #GET /questions
     def index
-        @questions = Question.all
+        if question_params[:difficulty_level]
+            @questions = Question.filter(question_params[:difficulty_level])
+        else
+            @questions = Question.all
+        end
         json_response(@questions)
     end
 
@@ -29,6 +33,8 @@ class QuestionsController < ApplicationController
         @question.destroy
         head :no_content
     end
+
+    #GET /
 
     private
 
