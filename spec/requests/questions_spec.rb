@@ -74,4 +74,20 @@ RSpec.describe "Questions API", type: :request do
         end
     end
 
+    describe 'PUT /questions/:id' do
+        let(:valid_attributes) { { difficulty_level: 'medium' } }
+
+        context 'when the record exists' do
+            before { put "/questions/#{question_id}", params: valid_attributes}
+
+            it 'updates the question' do
+                expect(response.body).to be_empty
+            end
+
+            it 'responds status code 204' do
+                expect(response).to have_http_status(204)
+            end
+        end
+    end
+
 end
