@@ -24,6 +24,12 @@ class QuestionsController < ApplicationController
         head :no_content
     end
 
+    #DELETE /questions/:id
+    def destroy
+        @question.destroy
+        head :no_content
+    end
+
     private
 
     def question_params
