@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Questions API", type: :request do
     let!(:questions) { create_list(:question, 5) }
+    let!(:questions_medium) { create_list(:question_medium, 3) }
+    let!(:questions_hard) { create_list(:question_hard, 2) }  
     let(:question_id) { questions.first.id }
 
     describe 'GET /questions' do
@@ -9,7 +11,7 @@ RSpec.describe "Questions API", type: :request do
 
         it 'retrieves questions' do
             expect(JSON.parse(response.body)).not_to be_empty
-            expect(JSON.parse(response.body).size).to eq(5)
+            expect(JSON.parse(response.body).size).to eq(10)
         end
 
         it 'responds status code 200' do
@@ -96,6 +98,40 @@ RSpec.describe "Questions API", type: :request do
         it 'returns status code 204' do
             expect(response).to have_http_status(204)
         end
+    end
+
+    describe 'GET /questions?difficulty_level=:difficulty_level' do
+        let(:easy) { { difficulty_level: 'easy' } }
+        let(:medium) { { difficulty_level: 'medium' } }
+        let(:hard) { { difficulty_level: 'hard' } }
+
+        context 'when difficulty level: easy' do
+            before { get '/questions?difficulty_level=easy' }
+        
+            it 'filters list of questions with difficulty level: easy' do
+                expect(JSON.parse(response.body)).not_to be_empty
+                expect(JSON.parse(response.body).size).to eq(5)
+            end
+        end
+
+        context 'when difficulty level: medium' do
+            before { get '/questions?difficulty_level=medium' }
+        
+            it 'filters list of questions with difficulty level: medium' do
+                expect(JSON.parse(response.body)).not_to be_empty
+                expect(JSON.parse(response.body).size).to eq(3)
+            end
+        end
+
+        context 'when difficulty level: hard' do
+            before { get '/questions?difficulty_level=hard' }
+        
+            it 'filters list of questions with difficulty level: hard' do
+                expect(JSON.parse(response.body)).not_to be_empty
+                expect(JSON.parse(response.body).size).to eq(2)
+            end
+        end
+        
     end
 
 end
