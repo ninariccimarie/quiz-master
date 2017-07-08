@@ -18,6 +18,12 @@ class QuestionsController < ApplicationController
         json_response(@question, :created)
     end
 
+    #PUT /questions/:id
+    def update
+        @question.update(question_params)
+        head :no_content
+    end
+
     private
 
     def question_params
