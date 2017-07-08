@@ -44,4 +44,34 @@ RSpec.describe "Questions API", type: :request do
         end
     end
 
+    describe 'POST /questions' do
+        let(:valid_attributes) { { question: 'What type of animal is a dog?', answer: 'Mammal', 
+                                    difficulty_level: 'easy' } }
+        
+        context 'when the request is valid' do
+            before { post '/questions', params: valid_attributes }
+
+            it 'creates a question' do
+                expect(JSON.parse(response.body)['answer']).to eq('Mammal')
+            end
+
+            it 'responds status code 201' do
+                expect(response).to have_http_status(201)
+            end
+        end
+
+        context 'when the request is invalid' do
+            before { post '/questions', params: { answer: 'Mammal' } }
+
+            it 'responds status code 422' do
+                expect(response).to have_http_status(422)
+            end    
+
+            it 'returns a validation error message' do
+                expect(response.body)
+                    .to match(/Validation failed: Question can't be blank, Difficulty level can't be blank/)
+            end
+        end
+    end
+
 end
