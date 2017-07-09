@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   resources :questions do
   end
+
+  post '/questions/:id', to: 'questions#answer'
 end
