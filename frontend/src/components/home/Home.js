@@ -1,4 +1,4 @@
-import React, {component} from 'react'
+import React, {Component} from 'react'
 import Manage from '../manage/Manage'
 import Play from '../play/Play'
 import styles from './home.scss'
@@ -10,11 +10,13 @@ import {
 
 const Home = () => (
     <div className={ styles.home }>
-        <div>
-            <Manage />
+        <div className={styles.manage}>
+            <Link to="/manage">Manage Questions</Link>
+            <Route path="/manage" component={Manage}/>
         </div>
-        <div>
-            <Play />
+        <div className={styles.play}>
+            <Link to="/play">Quiz Mode</Link>
+            <Route path="/play" component={Play}/>
         </div>
     </div>
 )

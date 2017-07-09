@@ -2,21 +2,23 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
     flex-flow: row wrap;
+    margin-top: 100px;
 
-    .about {
-        float: right;
-        text-align: right;
+    .manage {
+        float: left;
         position: relative;
-        max-width: 45%;
+        width: 400px;
+        height: 300px;
         margin: auto;
-        background-color:rgba(154, 211, 222, 0.3);
-        border-radius: 20px;
+        background-color:#000;
     }
 
-    .medicalServices {
+    .play {
         position: relative;
-        width: 50%;
+        width: 400px;
+        height: 300px;
+        background-color: #000;
+        margin: auto;
     }
 }
