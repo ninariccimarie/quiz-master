@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Home from './components/home/Home'
+import Manage from './components/manage/Manage'
+import Play from './components/play/Play'
 import {
 	BrowserRouter as Router,
 	Route,
@@ -7,20 +10,23 @@ import {
 
 import styles from './app.scss'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+const App = () => (
+  <Router>
+    <div>
+      <div className={ styles.topnav }>
+        <div className={ styles.container }>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/manage">Manage</Link></li>
+            <li><Link to="/play">Play</Link></li>
+          </ul>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
       </div>
-    );
-  }
-}
+        <Route exact path="/" component={Home}/>
+        <Route path="/manage" component={Manage}/>
+        <Route path="/play" component={Play}/>
+    </div>
+  </Router>
+) 
 
 export default App;
