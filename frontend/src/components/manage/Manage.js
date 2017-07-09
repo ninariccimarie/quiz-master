@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
 import Table from 'rc-table'
+import Api from '../../Api'
 import Form from './Form'
 import styles from './manage.scss'
 
-const questions = [
-    { id:1, question: "What is the capital of the Philippines?", answer: "Manila", difficulty_level: "easy" },
-    { id:2, question: "What is x in x + 1 = 2 ?", answer: "1", difficulty_level: "easy" },
-    { id:3, question: "True or False? The center of the Earth is very hot.", answer: "True", difficulty_level: "easy"}
-]
+const api = Api()
 
 const columns = [
     { title: 'Id', dataIndex: 'id', key: 'id', width: 250 },
@@ -21,16 +18,30 @@ export default class Manage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            questions: []
+            //questions: []
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.getAll = this.getAll.bind(this)
+        this.create = this.create.bind(this)
     }
 
-    handleSubmit(temp){
-        console.log(temp)
+    getAll() {
+        api.index('questions')
+        .then(response => this.setState({ questions: response.data }))
+        .catch(err => console.log(err))
+    }
+
+    create(params){
+        console.log(params)
+        api.create('questions', params)
+    }
+
+    componentDidMount(){
+        this.getAll()
     }
 
     render() {
+        const {questions} = this.state
+        if(!questions) return <p>Loading...</p>
 
         return(
             <div>
@@ -39,7 +50,7 @@ export default class Manage extends Component {
                     <Table columns={columns} data={questions}/>
                 </div>
                 <div>
-                    <Form onSubmit={this.handleSubmit} />
+                    <Form onSubmit={this.create} />
                 </div>
             </div>
         )

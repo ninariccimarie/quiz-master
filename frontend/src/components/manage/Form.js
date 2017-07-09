@@ -57,6 +57,10 @@ export default class Form extends Component {
     onSubmit() {
         const {question, answer, difficulty_level} = this.state
         this.props.onSubmit({question, answer, difficulty_level})
+        this.setState = {
+            question: '',
+            answer: '',
+        }
     }
 
     onQuestionChange(e) {
