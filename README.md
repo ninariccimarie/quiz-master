@@ -8,6 +8,8 @@ A web application to test your knowledge on various topics. Users may manage que
 <b>Built with</b>
 - [Ruby v2.4.1](https://www.ruby-lang.org/en/)
 - [Ruby on Rails v5.1.2](http://rubyonrails.org/)
+- ES2015
+- [React](https://facebook.github.io/react/)
 
 <b>Testing</b>
 - [RSpec v3.6.0](https://github.com/rspec/rspec-rails)
@@ -15,6 +17,11 @@ A web application to test your knowledge on various topics. Users may manage que
 - [FactoryGirl for Rails](https://github.com/thoughtbot/factory_girl_rails)
 - [Faker](https://github.com/stympy/faker)
 - [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner)
+
+<b>Front-end Dependencies</b>
+- [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
+- [sass-loader](https://github.com/webpack-contrib/sass-loader)
+- [node-sass](https://github.com/sass/node-sass)
 
 ## Getting Started
 
