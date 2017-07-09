@@ -1,0 +1,22 @@
+.home{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-flow: row wrap;
+
+    .about {
+        float: right;
+        text-align: right;
+        position: relative;
+        max-width: 45%;
+        margin: auto;
+        background-color:rgba(154, 211, 222, 0.3);
+        border-radius: 20px;
+    }
+
+    .medicalServices {
+        position: relative;
+        width: 50%;
+    }
+}
