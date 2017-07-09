@@ -45,6 +45,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
+    "axios": "^0.16.2",
     "node-sass": "^4.5.3",
     "rc-table": "^5.4.1",
     "sass-loader": "^6.0.6"
