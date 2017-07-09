@@ -69,20 +69,58 @@ RSpec.describe Question, type: :model do
     end
 
     context 'when answer is in words' do
-      before { subject.answer = "mammal"}
+      before { subject.answer = "mammal" }
 
-      context 'and is correct but have capital letter/s' do
-        it 'returns true' do
-          puts "#{subject.answer}"          
-          expect(question.is_correct?("MaMMal")).to be true
+      context 'is only one word' do
+        
+        context ', is a proper noun and is correct' do
+        before { subject.answer = "Mammal" }
+
+          it 'returns true' do
+            expect(question.is_correct?("Mammal")).to be true
+          end
         end
+
+        context 'and is correct but have capital letter/s' do
+          it 'returns true' do
+            puts "#{subject.answer}"          
+            expect(question.is_correct?("MaMMal")).to be true
+          end
+        end
+
+        context 'and is correct but have white space' do
+          it 'returns true' do
+            expect(question.is_correct?("   MaMMal   ")).to be true          
+          end
+        end
+
       end
 
-      context 'and is correct but have white space' do
-        it 'returns true' do
-          expect(question.is_correct?("   MaMMal   ")).to be true          
+      context ', is more than one word' do
+        before { subject.answer = "shark bait" }
+
+        context 'and is correct' do
+          it 'returns true' do
+            expect(question.is_correct?("shark bait")).to be true
+          end
         end
+
+        context ',is a proper noun, and is correct' do
+        before { subject.answer = "Luna Lovegood" }
+
+          it 'returns true' do
+            expect(question.is_correct?("Luna Lovegood")).to be true
+          end
+        end
+
+        context 'and is correct but have capital letter/s' do
+          it 'returns true' do
+            expect(question.is_correct?("ShArK baiT")).to be true
+          end
+        end
+
       end
+
     end
 
   end
