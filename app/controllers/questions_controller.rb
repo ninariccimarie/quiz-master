@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-    before_action :set_question, only: [:show, :update, :destroy]
+    before_action :set_question, only: [:show, :update, :destroy, :answer]
 
     #GET /questions
     def index
@@ -34,7 +34,17 @@ class QuestionsController < ApplicationController
         head :no_content
     end
 
-    #GET /
+    #POST /questions/:id
+    def answer
+        user_answer = params[:user_answer]
+        result = @question.is_correct?(user_answer)
+        
+        if result
+            json_response({message: "Yay! You're correct!"})
+        else
+            json_response({message: "Sorry, your answer is wrong. :("})
+        end
+    end
 
     private
 
