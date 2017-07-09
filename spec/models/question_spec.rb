@@ -74,7 +74,7 @@ RSpec.describe Question, type: :model do
       context 'is only one word' do
         
         context ', is a proper noun and is correct' do
-        before { subject.answer = "Mammal" }
+          before { subject.answer = "Mammal" }
 
           it 'returns true' do
             expect(question.is_correct?("Mammal")).to be true
@@ -83,7 +83,6 @@ RSpec.describe Question, type: :model do
 
         context 'and is correct but have capital letter/s' do
           it 'returns true' do
-            puts "#{subject.answer}"          
             expect(question.is_correct?("MaMMal")).to be true
           end
         end
@@ -106,7 +105,7 @@ RSpec.describe Question, type: :model do
         end
 
         context ',is a proper noun, and is correct' do
-        before { subject.answer = "Luna Lovegood" }
+          before { subject.answer = "Luna Lovegood" }
 
           it 'returns true' do
             expect(question.is_correct?("Luna Lovegood")).to be true
