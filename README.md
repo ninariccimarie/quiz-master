@@ -18,10 +18,16 @@ A web application to test your knowledge on various topics. Users may manage que
 - [Faker](https://github.com/stympy/faker)
 - [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner)
 
+<b>Back-end Dependencies</b>
+- [numbers_in_words](https://github.com/markburns/numbers_in_words)
+- [rack-cors](https://github.com/cyu/rack-cors)
+
 <b>Front-end Dependencies</b>
 - [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom)
 - [sass-loader](https://github.com/webpack-contrib/sass-loader)
 - [node-sass](https://github.com/sass/node-sass)
+- [rc-table](https://github.com/react-component/table)
+- [axios](https://github.com/mzabriskie/axios)
 
 ## Getting Started
 
