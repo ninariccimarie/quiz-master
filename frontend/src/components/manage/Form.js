@@ -1,52 +1,16 @@
 import React, {Component} from 'react'
 
-
-// const Question = (props) => {
-//     const onQuestionChange = (e) => {
-//         props.onChange(e.target.value)
-//     }
-//     return(
-//         <label>Question
-//                 <textarea value={props.question} onChange={onQuestionChange}/>
-//         </label>
-//     )
-// }
-
-// const Answer = (props) => {
-//     const onAnswerChange = (e) => {
-//         props.onChange(e.target.value)
-//     }
-//     return(
-//         <label>Answer
-//                 <input type="text" value={props.answer} onChange={onAnswerChange}/>
-//         </label>
-//     )
-// }
-
-// const DifficultyLevel = (props) => {
-//     const levels = [ "easy", "medium", "hard"]
-//     const onLevelChange = (e) => {
-//         props.onChange(e.target.value)
-//     }
-//     return(
-//         <label>Difficulty Level
-//             <select value={props.difficulty_level} onChange={onLevelChange}>
-//                 {levels.map((level) => 
-//                     <option key={level} value={level}>{level}</option>)}
-//             </select>
-//         </label>
-//     )
-// }
 const levels = [ "easy", "medium", "hard"]
 
 export default class Form extends Component {
     constructor(props) {
         super(props)
-
+        const question = props.question || {}
         this.state = {
-            question: '',
-            answer: '',
-            difficulty_level: 'easy'
+            id: question.id,
+            question: question.question || '',
+            answer: question.answer || '',
+            difficulty_level: question.difficulty_level || 'easy'
         }
 
         this.onSubmit = this.onSubmit.bind(this)
@@ -55,12 +19,12 @@ export default class Form extends Component {
         this.onLevelChange = this.onLevelChange.bind(this)
     }
     onSubmit() {
-        const {question, answer, difficulty_level} = this.state
-        this.props.onSubmit({question, answer, difficulty_level})
-        this.setState = {
+        const {id, question, answer, difficulty_level} = this.state
+        this.props.onSubmit({question, answer, difficulty_level}, id)
+        this.setState({
             question: '',
             answer: '',
-        }
+        })
     }
 
     onQuestionChange(e) {
