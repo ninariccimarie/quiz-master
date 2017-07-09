@@ -38,20 +38,49 @@ RSpec.describe Question, type: :model do
     context 'when answer is incorrect' do
 
       it 'returns false' do
-        expect(subject.is_correct?("2")).to be false
+        expect(question.is_correct?("2")).to be false
       end
     end
 
     context 'when answer is a number' do
       context 'and is correct but in words' do
         it 'returns true' do
-          expect(subject.is_correct?("one")).to be true
+          expect(question.is_correct?("one")).to be true
+        end
+      end
+
+      context 'and is correct but in words that has capital letter/s' do
+        it 'returns true' do
+          expect(question.is_correct?("OnE")).to be true
+        end
+      end
+
+      context 'and is correct but in words that has whitespace/s' do
+        it 'returns true' do
+          expect(question.is_correct?("   OnE   ")).to be true          
         end
       end
 
       context 'and is incorrect but in words' do
         it 'returns false' do
-          expect(subject.is_correct?("two")).to be false
+          expect(question.is_correct?("two")).to be false
+        end
+      end
+    end
+
+    context 'when answer is in words' do
+      before { subject.answer = "mammal"}
+
+      context 'and is correct but have capital letter/s' do
+        it 'returns true' do
+          puts "#{subject.answer}"          
+          expect(question.is_correct?("MaMMal")).to be true
+        end
+      end
+
+      context 'and is correct but have white space' do
+        it 'returns true' do
+          expect(question.is_correct?("   MaMMal   ")).to be true          
         end
       end
     end
