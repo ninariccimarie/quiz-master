@@ -130,8 +130,28 @@ RSpec.describe "Questions API", type: :request do
                 expect(JSON.parse(response.body)).not_to be_empty
                 expect(JSON.parse(response.body).size).to eq(2)
             end
-        end
+        end 
+    end
+
+    describe 'POST /questions/:id' do
         
+        context 'when user anwer is correct' do
+            before { post '/questions/1', params: { user_answer: 'Mammal' } }
+        
+            it 'returns a correct answer message' do
+                expect(response.body)
+                    .to match(/Yay! You're correct!/)
+            end
+        end
+
+        context 'when user answer is incorrect' do
+            before { post '/questions/1', params: { user_answer: 'Reptile' } }
+            
+            it 'returns a wrong answer message' do
+                expect(response.body)
+                    .to match(/Sorry, your answer is wrong. \:\(/)
+            end
+        end
     end
 
 end
