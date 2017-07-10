@@ -1,9 +1,11 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import Table from 'rc-table'
 import Api from '../../Api'
 import Form from './Form'
 import styles from './manage.scss'
 import Modal from 'react-modal'
+import renderHTML from 'react-render-html'
 
 const api = Api()
 
@@ -18,7 +20,7 @@ export default class Manage extends Component {
         }
         this.columns = [
             { title: 'Id', dataIndex: 'id', key: 'id', width: 250 },
-            { title: 'Question', dataIndex: 'question', key: 'question', width: 250 },
+            { title: 'Question', dataIndex: 'question', key: 'question', width: 250, render: (value) => renderHTML(value) },
             { title: 'Answer', dataIndex: 'answer', key: 'answer', width: 250 },
             { title: 'Difficulty Level', dataIndex: 'difficulty_level', key: 'difficulty_level', width: 250 },
             { title: 'Action', dataIndex: '', key: 'actions', width: 250, 
@@ -69,6 +71,7 @@ export default class Manage extends Component {
         api.index('questions')
         .then(response => this.setState({questions: response.data}))
         .catch(err => console.log(err))
+
     }
 
     create(params){
@@ -114,4 +117,16 @@ export default class Manage extends Component {
             </div>
         )
     }
+}
+
+Manage.propTypes = {
+    isModalOpen: PropTypes.bool,
+    modalProps: PropTypes.object,
+    columns: PropTypes.array,
+    getAll: PropTypes.func,
+    create: PropTypes.func,
+    destroy: PropTypes.func,
+    update: PropTypes.func,
+    showModal: PropTypes.func,
+    closeModal: PropTypes.func
 }
