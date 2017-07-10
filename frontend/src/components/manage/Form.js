@@ -1,6 +1,9 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import ReactQuill from 'react-quill'
+import DifficultyLevel from './DifficultyLevel'
+import PropTypes from 'prop-types';
 
-const levels = [ "easy", "medium", "hard"]
+import theme from 'react-quill/dist/quill.snow.css'
 
 export default class Form extends Component {
     constructor(props) {
@@ -16,7 +19,7 @@ export default class Form extends Component {
         this.onSubmit = this.onSubmit.bind(this)
         this.onQuestionChange = this.onQuestionChange.bind(this)
         this.onAnswerChange = this.onAnswerChange.bind(this)
-        this.onLevelChange = this.onLevelChange.bind(this)
+        this.handleLevelChange = this.handleLevelChange.bind(this)
     }
     onSubmit() {
         const {id, question, answer, difficulty_level} = this.state
@@ -27,16 +30,16 @@ export default class Form extends Component {
         })
     }
 
-    onQuestionChange(e) {
-        this.setState({question: e.target.value})
+    onQuestionChange(value) {
+        this.setState({question: value})
     }
 
     onAnswerChange(e) {
         this.setState({answer: e.target.value})
     }
 
-    onLevelChange(e) {
-        this.setState({difficulty_level: e.target.value})
+    handleLevelChange(difficulty_level) {
+        this.setState({difficulty_level})
     }
 
 
@@ -44,20 +47,33 @@ export default class Form extends Component {
         const {question, answer, difficulty_level} = this.state
         return(
             <div>
-                <label>Question
+                <ReactQuill value={question} onChange={this.onQuestionChange}/>
+                {/*<label>Question
                         <textarea value={question} onChange={this.onQuestionChange}/>
-                </label>
+                </label>*/}
                 <label>Answer
                     <input type="text" value={answer} onChange={this.onAnswerChange}/>
                 </label>
-                <label>Difficulty Level
+                {/*<label>Difficulty Level
                     <select value={difficulty_level} onChange={this.onLevelChange}>
                         {levels.map((level) => 
                             <option key={level} value={level}>{level}</option>)}
                     </select>
-                </label>
+                </label>*/}
+                <DifficultyLevel value={difficulty_level} onChange={this.handleLevelChange}/>
                 <button onClick={this.onSubmit}>Submit</button>
             </div>
         )
     }
+}
+
+Form.propTypes = {
+    id: PropTypes.number,
+    question: PropTypes.string,    
+    answer: PropTypes.string,
+    difficulty_level: PropTypes.string,
+    onSubmit: PropTypes.func,
+    onQuestionChange: PropTypes.func,
+    onAnswerChange: PropTypes.func,
+    handleLevelChange: PropTypes.func
 }
