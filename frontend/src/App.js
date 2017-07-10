@@ -7,6 +7,8 @@ import {
 	Route,
 	Link
 } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import styles from './app.scss'
 
@@ -25,8 +27,10 @@ const App = () => (
         <Route exact path="/" component={Home}/>
         <Route path="/manage" component={Manage}/>
         <Route path="/play" component={Play}/>
+        <ToastContainer autoClose={3000}/>
     </div>
   </Router>
+  
 ) 
 
 export default App;
