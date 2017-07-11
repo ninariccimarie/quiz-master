@@ -71,7 +71,6 @@ export default class Play extends Component {
         .then((response) => {
             const message = response.data.message
             if(message === 'Yay! You\'re correct!'){
-                console.log('score', score)
                 this.setState({score: score + 1})
             }
             toast(<ToastMessage message={message}/>)

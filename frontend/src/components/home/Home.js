@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom'
 
 const DifficultyModal = (props) => {
-    console.log('modal', props)
     return (
         <div className={styles.difficultyLevel}>
             <DifficultyLevel value={props.difficulty_level} onChange={props.handleLevelChange} />
