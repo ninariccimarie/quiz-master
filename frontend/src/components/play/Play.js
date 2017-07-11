@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Table from 'rc-table'
 import { toast } from 'react-toastify'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Api from '../../Api'
 import Quiz from './Quiz'
+import styles from './play.scss'
 
 const api = Api()
 
@@ -123,12 +125,22 @@ export default class Play extends Component {
     renderResult() {
         const {score, questions} = this.state
         return(
+              <ReactCSSTransitionGroup
+                className="container result"
+                component="div"
+                transitionName="fade"
+                transitionEnterTimeout={800}
+                transitionLeaveTimeout={500}
+                transitionAppear
+                transitionAppearTimeout={500}
+                >
             <h2>You got {score} out of {questions.length}</h2>
+            </ReactCSSTransitionGroup>
         )
     }
     render() {
         return(
-            <div>
+            <div className= {styles.play}>
                 {this.state.hasFinished ? this.renderResult() : this.renderQuiz()}
             </div>
         )
