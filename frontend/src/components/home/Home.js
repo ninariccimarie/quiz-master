@@ -3,6 +3,7 @@ import Manage from '../manage/Manage'
 import Play from '../play/Play'
 import DifficultyLevel from '../manage/DifficultyLevel'
 import styles from './home.scss'
+import './modal.css'
 
 import Modal from 'react-modal'
 import {
