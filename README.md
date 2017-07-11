@@ -42,7 +42,7 @@ difficulty level (easy, medium hard) or play all the questions.
 A quick introduction to get the application started.
 
 1. Clone the repository
-    - Under the repository name, click <b>Clone<b> or <b>download.</b>
+    - Under the repository name, click <b>Clone</b> or <b>download.</b>
     - In the Clone with HTTPs section, click the clipboard icon to copy the clone URL for the repository.
     - Open your terminal
     - Type `git clone`, and then paste the URL you copied in Step 2. It will look like this, with your GitHub usernam instead of `YOUR-USERNAME`:
