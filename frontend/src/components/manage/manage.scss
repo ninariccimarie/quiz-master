@@ -21,9 +21,19 @@
                 color: #fff;
             }
         }
-
-        .rc-table {
-            background-color: #8DC765;        
-        }
     }
+}
+
+.actions {
+background: #8DC765;               
+}
+
+.Modal {
+    position: absolute;
+    width: 40%;
+    height: 60%;
+    background-color: #3891A7;
+    border-radius: 10px;
+    left: 29%;
+    top: 20%;
 }

@@ -4,6 +4,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Question from './Question'
 import QuestionCount from './QuestionCount'
 import UserAnswer from './UserAnswer'
+import 'react-addons-css-transition-group'
 
 const Quiz = (props) => {
     return(

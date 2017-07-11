@@ -10,6 +10,7 @@ import Form from './Form'
 import 'rc-table/assets/index.css';
 import 'rc-table/assets/animation.css';
 import styles from './manage.scss'
+import '../home/modal.css'
 
 
 const api = Api()
@@ -23,13 +24,6 @@ export default class Manage extends Component {
                 label: ''
             }
         }
-        this.columns = [
-            { title: 'Id', dataIndex: 'id', key: 'id', width: 250 },
-            { title: 'Question', dataIndex: 'question', key: 'question', width: 250, render: (value) => renderHTML(value) },
-            { title: 'Answer', dataIndex: 'answer', key: 'answer', width: 250 },
-            { title: 'Difficulty Level', dataIndex: 'difficulty_level', key: 'difficulty_level', width: 250 },
-            { title: 'Action', dataIndex: '', key: 'actions', width: 250, className: 'actions', render: this.renderActions}
-        ]
         this.getAll = this.getAll.bind(this)
         this.create = this.create.bind(this)
         this.destroy = this.destroy.bind(this)
@@ -37,6 +31,14 @@ export default class Manage extends Component {
         this.showModal = this.showModal.bind(this)
         this.closeModal = this.closeModal.bind(this)
         this.renderActions = this.renderActions.bind(this)
+
+        this.columns = [
+            { title: 'Id', dataIndex: 'id', key: 'id', width: 100 },
+            { title: 'Question', dataIndex: 'question', key: 'question', width: 250, render: (value) => renderHTML(value) },
+            { title: 'Answer', dataIndex: 'answer', key: 'answer', width: 250 },
+            { title: 'Difficulty Level', dataIndex: 'difficulty_level', key: 'difficulty_level', width: 250 },
+            { title: 'Action', dataIndex: '', key: 'actions', width: 250, render: this.renderActions}
+        ]
     }
 
     showModal(type, question = {}) {
@@ -111,7 +113,9 @@ export default class Manage extends Component {
                 <Modal
                     isOpen={this.state.isModalOpen}
                     onRequestClose={this.closeModal}
-                    contentLabel={modalProps.label}                
+                    contentLabel={modalProps.label}
+                    className={styles.Modal}
+                    overlayClassName={styles.Overlay}                
                 >
                     <Form onSubmit={modalProps.action} question={modalProps.question}/>
                 </Modal>

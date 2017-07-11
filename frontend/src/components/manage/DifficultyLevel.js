@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styles from './difficultyLevel.scss'
 
 const levels = ["easy", "medium", "hard"]
 
@@ -8,12 +9,13 @@ const DifficultyLevel = (props) => {
         props.onChange(e.target.value)
     }
     return(
-        <label>Difficulty Level
-            <select value={props.value} onChange={onLevelChange}>
-                {levels.map((level) => 
-                    <option key={level} value={level}>{level}</option>)}
-            </select>
-        </label>
+        <div className={styles.difficultyLevel}>
+            <label>Difficulty Level</label>
+                <select  className={styles.select} value={props.value} onChange={onLevelChange}>
+                    {levels.map((level) => 
+                        <option key={level} value={level}>{level}</option>)}
+                </select>
+        </div>
     )
 
 }

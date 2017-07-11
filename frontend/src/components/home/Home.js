@@ -15,12 +15,12 @@ import {
 const DifficultyModal = (props) => {
     console.log('modal', props)
     return (
-        <div>
+        <div className={styles.difficultyLevel}>
             <DifficultyLevel value={props.difficulty_level} onChange={props.handleLevelChange} />
-            <div>
+            <div className={styles.play}>
                 <Link to={{pathname: "/play", state: {difficulty_level: props.difficulty_level}}}>Play</Link>   
             </div>
-            <div>
+            <div className={styles.playAll}>
                 <Link to="/play">Play All</Link> 
             </div>
         </div>
@@ -67,7 +67,10 @@ export default class Home extends Component {
                     <Modal
                         isOpen={this.state.isModalOpen}
                         onRequestClose={this.closeModal}
-                        contentLabel={'Play'}                
+                        contentLabel={'Play'}
+                        className={styles.Modal}
+                        overlayClassName={styles.Overlay}
+
                     >
                         <DifficultyModal 
                             difficulty_level={this.state.difficulty_level} 

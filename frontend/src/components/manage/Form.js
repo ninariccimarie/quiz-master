@@ -4,6 +4,7 @@ import DifficultyLevel from './DifficultyLevel'
 import PropTypes from 'prop-types';
 
 import theme from 'react-quill/dist/quill.snow.css'
+import styles from './form.scss'
 
 export default class Form extends Component {
     constructor(props) {
@@ -46,11 +47,11 @@ export default class Form extends Component {
     render() {
         const {question, answer, difficulty_level} = this.state
         return(
-            <div>
-                <ReactQuill value={question} onChange={this.onQuestionChange}/>
-                <label>Answer
-                    <input type="text" value={answer} onChange={this.onAnswerChange}/>
-                </label>
+            <div className={styles.form}>
+                <h2>Question</h2>
+                <ReactQuill theme="snow" value={question} onChange={this.onQuestionChange}/>
+                <label>Answer</label>
+                <input type="text" value={answer} onChange={this.onAnswerChange}/>
                 <DifficultyLevel value={difficulty_level} onChange={this.handleLevelChange}/>
                 <button onClick={this.onSubmit}>Submit</button>
             </div>

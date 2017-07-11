@@ -57,3 +57,44 @@
         }
     }
 }
+
+.Modal {
+    position: absolute;
+    width: 40%;
+    height: 50%;
+    background-color: #3891A7;
+    border-radius: 10px;
+    left: 29%;
+    top: 20%;
+}
+
+.difficultyLevel {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    .play {
+        background: rgba(54, 25, 25, .3);
+        font-size: 15px;
+        padding: 10px;
+        &:hover {
+                background:#8DC765;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+
+    .playAll {
+        background: rgba(54, 25, 25, .3);
+        font-size: 15px;
+        padding: 10px;
+        &:hover {
+                background: #8DC765;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+    }
+}
