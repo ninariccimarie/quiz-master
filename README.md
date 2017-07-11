@@ -57,8 +57,8 @@ $ git clone git@github.com:YOUR-USERNAME/quiz-master.git
 
 3. Install backend and frontend dependencies.
 ```
-$ npm install
 $ bundle
+$ npm install
 ```
 
 ## Getting Started
@@ -67,8 +67,8 @@ Navigate to the location of the project. Open separate terminals for the backend
 Start both servers.
 ```
 $ cd backend
-$ rails s
 $ rake db:reset
+$ rails s
 ```
 ```
 $ cd frontend

@@ -57,7 +57,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers js:babel-core/register --require ignore-styles --require jsdom-global/register test"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -98,5 +98,16 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "enzyme": "^2.9.1",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^11.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.4.2",
+    "react-dom": "^15.6.1",
+    "react-test-renderer": "^15.6.1",
+    "sinon": "^2.3.7"
   }
 }

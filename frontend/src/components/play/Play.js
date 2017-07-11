@@ -12,7 +12,7 @@ const ToastMessage = ({message}) => <h2>{message}</h2>
 export default class Play extends Component {
     constructor(props){
         super(props)
-        this.difficulty = props.location.state && props.location.state.difficulty_level || null
+        this.difficulty = props.location && props.location.state && props.location.state.difficulty_level || null
         this.state = {
             counter: 0,
             questionNum: 1,
