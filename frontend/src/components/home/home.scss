@@ -1,24 +1,42 @@
-.home{
+.home {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     flex-flow: row wrap;
     margin-top: 100px;
-
-    .manage {
-        float: left;
+    div {
+        display: flex;
         position: relative;
         width: 400px;
         height: 300px;
         margin: auto;
-        background-color:#000;
+        justify-content: center;
+        text-align: center;
+
+        a { 
+            margin-top: auto;
+            //margin-bottom: 30px;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            background: rgba(54, 25, 25, .3);
+            &:hover {
+                background: #C32D2E;
+            }
+        }
+    }
+
+    .manage {
+        background-color:#FEB80A;
+        a {
+            padding: 14px 116px;
+        }
     }
 
     .play {
-        position: relative;
-        width: 400px;
-        height: 300px;
-        background-color: #000;
-        margin: auto;
+        background-color: #8DC765;
+        a {
+            padding: 14px 178px;
+        }
     }
 }
