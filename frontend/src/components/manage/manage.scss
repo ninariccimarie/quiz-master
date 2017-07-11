@@ -21,6 +21,12 @@
                 color: #fff;
             }
         }
+
+        &.buttons {
+            .edit-btn {
+                background: #8DC765;
+            }
+        }
     }
 }
 
@@ -36,4 +42,8 @@ background: #8DC765;
     border-radius: 10px;
     left: 29%;
     top: 20%;
+}
+
+.rc-table td{
+    background: #8DC765; 
 }

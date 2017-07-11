@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import Manage from '../manage/Manage'
-import Play from '../play/Play'
 import DifficultyLevel from '../manage/DifficultyLevel'
 import styles from './home.scss'
 import './modal.css'
 
 import Modal from 'react-modal'
 import {
-	BrowserRouter as Router,
-	Route,
 	Link
 } from 'react-router-dom'
 
@@ -53,8 +49,6 @@ export default class Home extends Component {
     }
 
     render(){
-        const {questions, modalProps, difficulty_level = {}} = this.state
-        // if(!questions) return <p>Loading...</p>
         return(
             <div className={ styles.home }>
                 <div className={styles.manage}>

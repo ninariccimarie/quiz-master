@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Table from 'rc-table'
 import { toast } from 'react-toastify'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Api from '../../Api'
@@ -47,7 +46,6 @@ export default class Play extends Component {
     }
 
     handleAnswerChange(e){
-        const questions = this.state.questions
         this.setUserAnswer(e.target.value)
     }
 
@@ -62,10 +60,6 @@ export default class Play extends Component {
             questionId: questions[counter].id,
             user_answer: ''
         })
-    }
-
-    getResults(){
-        const answersCount = this.state.answersCount
     }
 
     checkAnswer(id, params){

@@ -61,7 +61,7 @@ export default class Form extends Component {
 
 Form.propTypes = {
     id: PropTypes.number,
-    question: PropTypes.string,    
+    question: PropTypes.object,    
     answer: PropTypes.string,
     difficulty_level: PropTypes.string,
     onSubmit: PropTypes.func,

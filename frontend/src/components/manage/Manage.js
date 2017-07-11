@@ -93,7 +93,7 @@ export default class Manage extends Component {
 
     renderActions(value, row, index) {
         return(
-            <div>
+            <div className={styles.buttons}>
                 <button className='edit-btn' onClick={e => this.showModal('update', row)}>Edit</button>
                 <button className='delete-btn'onClick={e => this.destroy(row.id)}>Delete</button>
             </div>
@@ -107,7 +107,6 @@ export default class Manage extends Component {
     render() {
         const {questions, modalProps = {}} = this.state
         if(!questions) return <p>Loading...</p>
-        // const display = modal.open ? <Modal open={modal.open} content='Hey' label='Ho'/> : <p></p>
         return(
             <div className={ styles.manage }>
                 <Modal

@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styles from './difficultyLevel.scss'
 
 const levels = ["easy", "medium", "hard"]
 
 const DifficultyLevel = (props) => {
     const onLevelChange = (e) => {
-        console.log('e.target.value',e.target.value)
         props.onChange(e.target.value)
     }
     return(

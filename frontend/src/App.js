@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Home from './components/home/Home'
 import Manage from './components/manage/Manage'
 import Play from './components/play/Play'

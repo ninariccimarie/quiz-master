@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import Question from './Question'
@@ -47,9 +47,3 @@ Quiz.propTypes = {
 }
 
 export default Quiz
-
-/*questions = {props.questions}
-user_answer= {props.user_answer}
-onAnswerChange = {props.onAnswerChange}
-checkAnswer = {props.checkAnswer}
-result = {props.result}*/
