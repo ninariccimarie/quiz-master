@@ -1,0 +1,23 @@
+.play {
+    width: 60%;
+    height: 400px;
+    vertical-align: center;
+    margin: auto;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #8DC765;
+    margin-top: 60px;
+    display: flex;
+
+    div {
+        position: relative;
+        flex-flow: column;
+        padding: 10px;
+        margin: auto;
+        text-align: center;
+
+        h1 {
+            margin-top: 0px;
+        }
+    }
+}

@@ -57,9 +57,11 @@ export default class Home extends Component {
         return(
             <div className={ styles.home }>
                 <div className={styles.manage}>
+                    <div className={styles.icon}></div>
                     <Link to="/manage">Manage Questions</Link>
                 </div>
                 <div className={styles.play}>
+                    <div className={styles.icon}></div>
                     <a href='#' onClick={e => this.showModal()}>Play!</a>
                     <Modal
                         isOpen={this.state.isModalOpen}
