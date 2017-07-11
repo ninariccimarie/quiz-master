@@ -18,11 +18,17 @@ difficulty level (easy, medium hard) or play all the questions.
 - [React](https://facebook.github.io/react/)
 
 <b>Testing</b>
+<b>Backend</b>
 - [RSpec v3.6.0](https://github.com/rspec/rspec-rails)
 - [Shoulda](https://github.com/thoughtbot/shoulda)
 - [FactoryGirl for Rails](https://github.com/thoughtbot/factory_girl_rails)
 - [Faker](https://github.com/stympy/faker)
 - [DatabaseCleaner](https://github.com/DatabaseCleaner/database_cleaner)
+<b>Frontend</b>
+- [mocha](https://mochajs.org/)
+- [sinon](http://sinonjs.org/)
+- [enzyme](https://github.com/airbnb/enzyme)
+- [chai](http://chaijs.com/)
 
 <b>Back-end Dependencies</b>
 - [numbers_in_words](https://github.com/markburns/numbers_in_words)
@@ -45,10 +51,9 @@ A quick introduction to get the application started.
     - Under the repository name, click <b>Clone</b> or <b>download.</b>
     - In the Clone with HTTPs section, click the clipboard icon to copy the clone URL for the repository.
     - Open your terminal
-    - Type `git clone`, and then paste the URL you copied in Step 2. It will look like this, with your GitHub usernam instead of `YOUR-USERNAME`:
 
 ```
-$ git clone git@github.com:YOUR-USERNAME/quiz-master.git
+$ git clone https://github.com/ninariccimarie/quiz-master.git
 ```
 
     * Press Enter. Your local clone will be created.
@@ -78,7 +83,11 @@ Runs the app in the development mode.
 Open http://localhost:3000 to view it in the browser.
 
 To run the app on testing environment and run all tests:
+
 ```
+$ # backend test
 $ rake db:test:prepare
-$ exec rspec spec
+$ exec rspec spec 
+$ # frontend test
+$ npm test
 ```
