@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import Table from 'rc-table'
-import Api from '../../Api'
-import Form from './Form'
-import styles from './manage.scss'
 import Modal from 'react-modal'
 import renderHTML from 'react-render-html'
+
+import Api from '../../Api'
+import Form from './Form'
+
+import 'rc-table/assets/index.css';
+import 'rc-table/assets/animation.css';
+import styles from './manage.scss'
+
 
 const api = Api()
 
@@ -23,16 +28,7 @@ export default class Manage extends Component {
             { title: 'Question', dataIndex: 'question', key: 'question', width: 250, render: (value) => renderHTML(value) },
             { title: 'Answer', dataIndex: 'answer', key: 'answer', width: 250 },
             { title: 'Difficulty Level', dataIndex: 'difficulty_level', key: 'difficulty_level', width: 250 },
-            { title: 'Action', dataIndex: '', key: 'actions', width: 250, 
-                render: (value, row, index) => {
-                    return (
-                        <div>
-                            <button onClick={e => this.showModal('update', row)}>Edit</button>
-                            <button onClick={e => this.destroy(row.id)}>Delete</button>
-                        </div>
-                    )
-                }
-            }
+            { title: 'Action', dataIndex: '', key: 'actions', width: 250, className: 'actions', render: this.renderActions}
         ]
         this.getAll = this.getAll.bind(this)
         this.create = this.create.bind(this)
@@ -40,6 +36,7 @@ export default class Manage extends Component {
         this.update = this.update.bind(this)
         this.showModal = this.showModal.bind(this)
         this.closeModal = this.closeModal.bind(this)
+        this.renderActions = this.renderActions.bind(this)
     }
 
     showModal(type, question = {}) {
@@ -92,6 +89,15 @@ export default class Manage extends Component {
         
     }
 
+    renderActions(value, row, index) {
+        return(
+            <div>
+                <button className='edit-btn' onClick={e => this.showModal('update', row)}>Edit</button>
+                <button className='delete-btn'onClick={e => this.destroy(row.id)}>Delete</button>
+            </div>
+        )
+    }
+
     componentDidMount(){
         this.getAll()
     }
@@ -101,7 +107,7 @@ export default class Manage extends Component {
         if(!questions) return <p>Loading...</p>
         // const display = modal.open ? <Modal open={modal.open} content='Hey' label='Ho'/> : <p></p>
         return(
-            <div>
+            <div className={ styles.manage }>
                 <Modal
                     isOpen={this.state.isModalOpen}
                     onRequestClose={this.closeModal}
@@ -109,11 +115,16 @@ export default class Manage extends Component {
                 >
                     <Form onSubmit={modalProps.action} question={modalProps.question}/>
                 </Modal>
-                <h1>Manage Questions</h1>
-                <div>
-                    <Table columns={this.columns} data={questions}/>
+                <h1 className={ styles.title }>Manage Questions</h1>
+                <div className={ styles.table }>
+                    <button className= {styles.button} onClick={e => this.showModal('create')}>New Question</button>                    
+                    <Table 
+                        columns={this.columns} 
+                        data={questions} 
+                        scroll={{ y: 300 }}
+                        title={currentData => <div>List: {currentData.length} questions</div>}
+                    />
                 </div>
-                <button onClick={e => this.showModal('create')}>New</button>
             </div>
         )
     }
@@ -128,5 +139,6 @@ Manage.propTypes = {
     destroy: PropTypes.func,
     update: PropTypes.func,
     showModal: PropTypes.func,
-    closeModal: PropTypes.func
+    closeModal: PropTypes.func,
+    renderActions: PropTypes.func
 }

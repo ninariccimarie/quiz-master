@@ -48,18 +48,9 @@ export default class Form extends Component {
         return(
             <div>
                 <ReactQuill value={question} onChange={this.onQuestionChange}/>
-                {/*<label>Question
-                        <textarea value={question} onChange={this.onQuestionChange}/>
-                </label>*/}
                 <label>Answer
                     <input type="text" value={answer} onChange={this.onAnswerChange}/>
                 </label>
-                {/*<label>Difficulty Level
-                    <select value={difficulty_level} onChange={this.onLevelChange}>
-                        {levels.map((level) => 
-                            <option key={level} value={level}>{level}</option>)}
-                    </select>
-                </label>*/}
                 <DifficultyLevel value={difficulty_level} onChange={this.handleLevelChange}/>
                 <button onClick={this.onSubmit}>Submit</button>
             </div>
