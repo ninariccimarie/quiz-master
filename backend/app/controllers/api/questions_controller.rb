@@ -3,7 +3,6 @@ class Api::QuestionsController < Api::ApiController
   before_action :set_question, only: [:show, :update, :destroy, :answer]
 
   def index
-
     @questions =
       if question_params[:difficulty_level]
         Question.filter(question_params[:difficulty_level])
