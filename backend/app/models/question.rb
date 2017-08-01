@@ -7,7 +7,7 @@ class Question < ApplicationRecord
     def is_correct?(user_answer)
 
         if is_integer?(answer)
-            NumbersInWords.in_numbers(user_answer) == answer.to_i           
+            NumbersInWords.in_numbers(user_answer) == answer.to_i
         else
             self.answer.downcase == user_answer.strip.downcase
         end

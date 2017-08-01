@@ -8,9 +8,9 @@ class Api::ApiController < ApplicationController
     #   Create client model
     #
     token = Client.find_by(token: params[:token])
+
     unless Rails.application.secrets.whitelisted_token == token
       head :unauthorized
     end
   end
-
 end

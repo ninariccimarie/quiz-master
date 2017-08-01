@@ -10,7 +10,12 @@ class Api::QuestionsController < Api::ApiController
         Question.all
       end
 
-    json_response @questions
+    case params[:version]
+    when "1"
+      json_response @questions
+    when "2"
+      json_response @questions.as_json(only: [:id, :answer])
+    end
   end
 
   def show
