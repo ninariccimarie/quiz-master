@@ -3,14 +3,14 @@ require 'rails_helper'
 RSpec.describe "Questions API", type: :request do
     let!(:questions) { create_list(:question, 5) }
     let!(:questions_medium) { create_list(:question_medium, 3) }
-    let!(:questions_hard) { create_list(:question_hard, 2) }  
+    let!(:questions_hard) { create_list(:question_hard, 2) }
     let(:question_id) { questions.first.id }
 
     describe 'GET /questions' do
         before { get '/questions' }
 
         it 'retrieves questions' do
-            expect(JSON.parse(response.body)).not_to be_empty
+            expect(json).not_to be_empty
             expect(JSON.parse(response.body).size).to eq(10)
         end
 
@@ -47,9 +47,9 @@ RSpec.describe "Questions API", type: :request do
     end
 
     describe 'POST /questions' do
-        let(:valid_attributes) { { question: 'What type of animal is a dog?', answer: 'Mammal', 
+        let(:valid_attributes) { { question: 'What type of animal is a dog?', answer: 'Mammal',
                                     difficulty_level: 'easy' } }
-        
+
         context 'when the request is valid' do
             before { post '/questions', params: valid_attributes }
 
@@ -67,7 +67,7 @@ RSpec.describe "Questions API", type: :request do
 
             it 'responds status code 422' do
                 expect(response).to have_http_status(422)
-            end    
+            end
 
             it 'returns a validation error message' do
                 expect(response.body)
@@ -107,7 +107,7 @@ RSpec.describe "Questions API", type: :request do
 
         context 'when difficulty level: easy' do
             before { get '/questions?difficulty_level=easy' }
-        
+
             it 'filters list of questions with difficulty level: easy' do
                 expect(JSON.parse(response.body)).not_to be_empty
                 expect(JSON.parse(response.body).size).to eq(5)
@@ -116,7 +116,7 @@ RSpec.describe "Questions API", type: :request do
 
         context 'when difficulty level: medium' do
             before { get '/questions?difficulty_level=medium' }
-        
+
             it 'filters list of questions with difficulty level: medium' do
                 expect(JSON.parse(response.body)).not_to be_empty
                 expect(JSON.parse(response.body).size).to eq(3)
@@ -125,19 +125,19 @@ RSpec.describe "Questions API", type: :request do
 
         context 'when difficulty level: hard' do
             before { get '/questions?difficulty_level=hard' }
-        
+
             it 'filters list of questions with difficulty level: hard' do
                 expect(JSON.parse(response.body)).not_to be_empty
                 expect(JSON.parse(response.body).size).to eq(2)
             end
-        end 
+        end
     end
 
     describe 'POST /questions/:id' do
-        
+
         context 'when user anwer is correct' do
             before { post '/questions/1', params: { user_answer: 'Mammal' } }
-        
+
             it 'returns a correct answer message' do
                 expect(response.body)
                     .to match(/Yay! You're correct!/)
@@ -146,7 +146,7 @@ RSpec.describe "Questions API", type: :request do
 
         context 'when user answer is incorrect' do
             before { post '/questions/1', params: { user_answer: 'Reptile' } }
-            
+
             it 'returns a wrong answer message' do
                 expect(response.body)
                     .to match(/Sorry, your answer is wrong. \:\(/)
