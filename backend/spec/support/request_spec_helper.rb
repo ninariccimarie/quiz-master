@@ -1,6 +1,7 @@
 module RequestSpecHelper
-  # Parse JSON response to ruby hash
   def json
+    puts "========================"
+    puts response.body
     JSON.parse(response.body)
   end
 end

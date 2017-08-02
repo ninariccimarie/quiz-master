@@ -10,7 +10,7 @@ class Api::ApiController < ApplicationController
     token = Client.find_by(token: params[:token])
 
     unless Rails.application.secrets.whitelisted_token == token
-      head :unauthorized
+      json_response({ errors: [ { detail: "Access denied" } ] }, 401)
     end
   end
 end
