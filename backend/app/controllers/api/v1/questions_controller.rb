@@ -1,4 +1,4 @@
-class Api::QuestionsController < Api::ApiController
+class Api::V1::QuestionsController < Api::ApiController
 
   before_action :set_question, only: [:show, :update, :destroy, :answer]
 
