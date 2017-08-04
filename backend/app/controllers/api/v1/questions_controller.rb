@@ -9,7 +9,7 @@ class Api::V1::QuestionsController < Api::V1::ApiController
       else
         Question.all
       end
-      json_response(@questions)
+    json_response(@questions)
   end
 
   def show
