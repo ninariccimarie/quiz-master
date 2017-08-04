@@ -1,4 +1,4 @@
-class Api::V1::QuestionsController < Api::ApiController
+class Api::V1::QuestionsController < Api::V1::ApiController
 
   before_action :set_question, only: [:show, :update, :destroy, :answer]
 
@@ -9,13 +9,7 @@ class Api::V1::QuestionsController < Api::ApiController
       else
         Question.all
       end
-
-    case params[:version]
-    when "1"
-      json_response @questions
-    when "2"
-      json_response @questions.as_json(only: [:id, :answer])
-    end
+      json_response(@questions)
   end
 
   def show
