@@ -38,7 +38,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
         get "/api/v1/questions/#{question_id}", params: {}, headers: { "Authorization" => "Token token=#{client.token}" }
       end
 
-      context 'and when the question exists' do
+      context 'and the question exists' do
         it "returns the question" do
           expect(json).not_to be_empty
           expect(json['id']).to eq(question_id)
@@ -49,7 +49,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
         end
       end
 
-      context 'and when the question does not exist' do
+      context 'and the question does not exist' do
         let(:question_id) { 100 }
 
         it 'responds status code 404' do
@@ -81,7 +81,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
     end
 
     context 'when authenticated' do
-      context 'and when the request is valid' do
+      context 'and the request is valid' do
         before { post '/api/v1/questions', params: valid_attributes, headers: { "Authorization" => "Token token=#{client.token}" } }
 
         it 'creates a question' do
@@ -94,7 +94,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
         end
       end
 
-      context 'and when the request is invalid' do
+      context 'and the request is invalid' do
         before { post '/api/v1/questions', params: { answer: 'Mammal' }, headers: { "Authorization" => "Token token=#{client.token}" } }
 
         it 'responds status code 422' do
@@ -121,7 +121,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
     let(:valid_attributes) { { difficulty_level: 'medium' } }
 
     context 'when authenticated' do
-      context 'and when the record exists' do
+      context 'and the record exists' do
         before { put "/api/v1/questions/#{question_id}", params: valid_attributes, headers: { "Authorization" => "Token token=#{client.token}" } }
 
         it 'updates the question' do
@@ -168,7 +168,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
     let(:hard) { { difficulty_level: 'hard' } }
 
     context 'when authenticated' do
-      context 'and when difficulty level: easy' do
+      context 'and difficulty level: easy' do
         before { get '/api/v1/questions?difficulty_level=easy', params: {}, headers: { "Authorization" => "Token token=#{client.token}" } }
 
         it 'filters list of questions with difficulty level: easy' do
@@ -177,7 +177,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
         end
       end
 
-      context 'and when difficulty level: medium' do
+      context 'and difficulty level: medium' do
         before { get '/api/v1/questions?difficulty_level=medium', params: {}, headers: { "Authorization" => "Token token=#{client.token}" } }
 
         it 'filters list of questions with difficulty level: medium' do
@@ -186,7 +186,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
         end
       end
 
-      context 'and when difficulty level: hard' do
+      context 'and difficulty level: hard' do
         before { get '/api/v1/questions?difficulty_level=hard', params: {}, headers: { "Authorization" => "Token token=#{client.token}" } }
 
         it 'filters list of questions with difficulty level: hard' do
@@ -207,19 +207,39 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
 
   describe 'POST /questions/:id/answers' do
     context 'when authenticated' do
-      context 'and when user anwer is correct' do
-        before { post '/api/v1/questions/1/answers', params: { user_answer: 'Mammal' }, headers: { "Authorization" => "Token token=#{client.token}" } }
+      context 'when user anwer is correct' do
+        context 'and the user has set their locale to :en' do
+          before { post '/api/v1/questions/1/answers?locale=en', params: { user_answer: 'Mammal' }, headers: { "Authorization" => "Token token=#{client.token}" } }
 
-        it 'returns a correct answer message' do
-          expect(response.body).to match(/Yay! You're correct!/)
+          it 'returns a correct answer message in English' do
+            expect(response.body).to match(/Yay! You're correct!/)
+          end
+        end
+
+        context 'and the user has set their locale to :en-PH' do
+          before { post '/api/v1/questions/1/answers?locale=en-PH', params: { user_answer: 'Mammal' }, headers: { "Authorization" => "Token token=#{client.token}" } }
+          
+          it 'returns a correct answer message in Tagalog' do
+            expect(response.body).to match(/Yehey! Tama ka!/)
+          end
         end
       end
 
-      context 'and when user answer is incorrect' do
-        before { post '/api/v1/questions/1/answers', params: { user_answer: 'Reptile' }, headers: { "Authorization" => "Token token=#{client.token}" } }
+      context 'when user answer is incorrect' do
+        context 'and the user has set their locale to :en' do
+          before { post '/api/v1/questions/1/answers?locale=en', params: { user_answer: 'Reptile' }, headers: { "Authorization" => "Token token=#{client.token}" } }
 
-        it 'returns a wrong answer message' do
-          expect(response.body).to match(/Sorry, your answer is wrong. \:\(/)
+          it 'returns a wrong answer message in English' do
+            expect(response.body).to match(/Sorry, your answer is wrong. \:\(/)
+          end
+        end
+
+        context 'and the user has set their locale to :en-PH' do
+          before { post '/api/v1/questions/1/answers?locale=en-PH', params: { user_answer: 'Reptile' }, headers: { "Authorization" => "Token token=#{client.token}" } }
+
+          it 'returns a wrong answer message in Tagalog' do
+            expect(response.body).to match(/Pasensya, mali and iyong sagot. \:\(/)
+          end
         end
       end
     end
