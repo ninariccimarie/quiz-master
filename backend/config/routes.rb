@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :questions, only: [:index, :create, :show, :update, :destroy] do
         member do
-          get :answers
+          post :answers, to: 'questions#answer'
         end
       end
     end
