@@ -1,22 +1,34 @@
 require 'rails_helper'
 
-RSpec.describe "Questions API", type: :request do
+RSpec.describe Api::V1::QuestionsController, type: :request do
   let!(:questions) { create_list(:question, 5) }
   let!(:questions_medium) { create_list(:question_medium, 3) }
   let!(:questions_hard) { create_list(:question_hard, 2) }
+  let!(:client) { create :client }
   let(:question_id) { questions.first.id }
-  let(:token) {'WLXTomWa3mM8QKtKRe5W2Mr2'}
 
   describe 'GET /api/v1/questions' do
-    before { get '/api/v1/questions' }
+    context 'when authenticated' do
+      before do
+        get '/api/v1/questions', params: {}, headers: { "Authorization" => "Token token=#{client.token}" }
+      end
 
-    it 'retrieves questions' do
-      expect(json).not_to be_empty
-      expect(json.size).to eq(10)
+      it 'retrieves questions' do
+        expect(json).not_to be_empty
+        expect(json.size).to eq(10)
+      end
+
+      it 'responds status code 200' do
+        expect(response).to have_http_status(200)
+      end
     end
 
-    it 'responds status code 200' do
-      expect(response).to have_http_status(200)
+    context 'when unauthenticated' do
+      before { get '/api/v1/questions', params: {}, headers: { "Authorization" => "Token token=foo" } }
+
+      it 'responds status code 401' do
+        expect(response).to have_http_status(401)
+      end
     end
   end
 
@@ -45,11 +57,16 @@ RSpec.describe "Questions API", type: :request do
         expect(response.body).to include("Couldn't find Question")
       end
     end
-end
+  end
 
   describe 'POST /api/v1/questions' do
-    let(:valid_attributes) { { question: 'What type of animal is a dog?', answer: 'Mammal',
-                               difficulty_level: 'easy' } }
+    let(:valid_attributes) do
+      {
+        question:         'What type of animal is a dog?',
+        answer:           'Mammal',
+        difficulty_level: 'easy'
+      }
+    end
 
     context 'when the request is valid' do
       before { post '/api/v1/questions', params: valid_attributes }
@@ -132,7 +149,7 @@ end
       end
     end
   end
-  
+
   describe 'POST /questions/:id' do
 
     context 'when user anwer is correct' do
@@ -151,5 +168,4 @@ end
       end
     end
   end
-
 end
