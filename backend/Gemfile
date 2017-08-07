@@ -15,7 +15,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'numbers_in_words'
 gem 'rack-cors'
-gem 'rails_admin', '~> 1.2'
 
 group :development, :test do
   gem 'pry'
