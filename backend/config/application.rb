@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module QuizMaster
   class Application < Rails::Application
 
+    config.i18n.fallbacks = true
+    config.i18n.fallbacks = [:en, :"en-PH"]
+
     def default_url_options
       { locale: I18n.locale }
     end
