@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module QuizMaster
   class Application < Rails::Application
+
+    def default_url_options
+      { locale: I18n.locale }
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
