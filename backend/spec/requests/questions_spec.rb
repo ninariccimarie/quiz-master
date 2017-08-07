@@ -88,6 +88,7 @@ RSpec.describe Api::V1::QuestionsController, type: :request do
           expect(json['answer']).to eq('Mammal')
         end
 
+
         it 'responds status code 201' do
           expect(response).to have_http_status(201)
         end
