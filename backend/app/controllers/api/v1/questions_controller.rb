@@ -33,9 +33,9 @@ class Api::V1::QuestionsController < Api::V1::ApiController
 
   def answer
     if @question.is_correct?(user_params[:user_answer])
-      json_response({message: "Yay! You're correct!"})
+      json_response({message: t(:correct)})
     else
-      json_response({message: "Sorry, your answer is wrong. :("})
+      json_response({message: t(:wrong)})
     end
   end
 
