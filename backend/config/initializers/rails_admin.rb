@@ -2,8 +2,7 @@ RailsAdmin.config do |config|
 
   config.authorize_with do
     authenticate_or_request_with_http_basic('Admin Authentication') do |username, password|
-      admin = Client.find_by_id(1)
-      username == admin.name.downcase && admin.authenticate(password)
+      Client.find_by_name(username).try(:authenticate, password)
     end
   end
   
