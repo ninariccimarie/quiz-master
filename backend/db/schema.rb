@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809033458) do
+ActiveRecord::Schema.define(version: 20190517171351) do
 
   create_table "clients", force: :cascade do |t|
     t.string "token"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20170809033458) do
     t.integer "difficulty_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string "student_name"
+    t.string "class_name"
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "answers"
   end
 
 end
