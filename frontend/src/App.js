@@ -30,7 +30,6 @@ const App = () => (
         <ToastContainer autoClose={3000}/>
     </div>
   </Router>
-  
-) 
+)
 
 export default App;

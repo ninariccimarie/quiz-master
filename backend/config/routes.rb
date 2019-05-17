@@ -6,9 +6,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :questions, only: [:index, :create, :show, :update, :destroy] do
         member do
-          post :answers, to: 'questions#answer'
+          post :answer, to: 'questions#answer'
         end
       end
+
+      resources :quizzes
     end
   end
 end

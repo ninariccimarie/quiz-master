@@ -17,6 +17,7 @@ gem 'numbers_in_words'
 gem 'rack-cors'
 gem 'rails_admin', '~> 1.2'
 gem 'bcrypt', '~> 3.1.7'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'pry'

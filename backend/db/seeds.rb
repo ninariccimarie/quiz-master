@@ -1,5 +1,5 @@
-Client.create!(name: 'Nina', 
-              token: 'WLXTomWa3mM8QKtKRe5W2Mr2', 
+Client.create!(name: 'Nina',
+              token: 'WLXTomWa3mM8QKtKRe5W2Mr2',
               password: 'admin',
               password_confirmation: 'admin')
 

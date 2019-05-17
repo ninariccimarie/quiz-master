@@ -1,8 +1,11 @@
 import Axios from 'axios'
 
-const axios = Axios.create({ 
-    baseURL: 'http://localhost:3008/', 
-    headers: {'Content-Type': 'application/json'} 
+const axios = Axios.create({
+    baseURL: 'http://localhost:3008/api/v1/',
+    headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Token token=WLXTomWa3mM8QKtKRe5W2Mr2'
+    }
 })
 
 const index = (endpoint, params) => {
@@ -28,7 +31,7 @@ const destroy = (endpoint, id) => {
 }
 
 const answer = (endpoint, id, params) => {
-    return axios.post(`${endpoint}/${id}`, params)
+    return axios.post(`${endpoint}/${id}/answer`, params)
 }
 
 const proto = {
