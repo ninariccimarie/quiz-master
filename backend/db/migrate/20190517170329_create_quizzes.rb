@@ -4,7 +4,6 @@ class CreateQuizzes < ActiveRecord::Migration[5.1]
       t.string :student_name
       t.string :class_name
       t.string :subject
-      t.string :day
       t.timestamps
     end
   end

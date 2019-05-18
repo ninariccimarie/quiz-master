@@ -13,10 +13,10 @@ const DifficultyModal = (props) => {
         <div className={styles.difficultyLevel}>
             <DifficultyLevel value={props.difficulty_level} onChange={props.handleLevelChange} />
             <div className={styles.play}>
-                <Link to={{pathname: "/play", state: {difficulty_level: props.difficulty_level}}}>Play</Link>   
+                <Link to={{pathname: "/play", state: {difficulty_level: props.difficulty_level}}}>Play</Link>
             </div>
             <div className={styles.playAll}>
-                <Link to="/play">Play All</Link> 
+                <Link to="/play">Play All</Link>
             </div>
         </div>
     )
@@ -54,6 +54,10 @@ export default class Home extends Component {
                     <div className={styles.icon}></div>
                     <Link to="/manage">Manage Questions</Link>
                 </div>
+                <div className={styles.history}>
+                    <div className={styles.icon}></div>
+                    <Link to="/history">History</Link>
+                </div>
                 <div className={styles.play}>
                     <div className={styles.icon}></div>
                     <a href='#' onClick={e => this.showModal()}>Play!</a>
@@ -65,8 +69,8 @@ export default class Home extends Component {
                         overlayClassName={styles.Overlay}
 
                     >
-                        <DifficultyModal 
-                            difficulty_level={this.state.difficulty_level} 
+                        <DifficultyModal
+                            difficulty_level={this.state.difficulty_level}
                             handleLevelChange={this.handleLevelChange}
                         />
                     </Modal>

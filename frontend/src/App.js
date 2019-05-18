@@ -1,7 +1,8 @@
 import React from 'react';
 import Home from './components/home/Home'
 import Manage from './components/manage/Manage'
-import Play from './components/play/Play'
+// import Play from './components/play/Play'
+import History from './components/history/History'
 import {
 	BrowserRouter as Router,
 	Route,
@@ -20,13 +21,15 @@ const App = () => (
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/manage">Manage</Link></li>
-            <li><Link to="/play">Play</Link></li>
+            <li><Link to="/history">History</Link></li>
+            {/* <li><Link to="/play">Play</Link></li> */}
           </ul>
         </div>
       </div>
         <Route exact path="/" component={Home}/>
         <Route path="/manage" component={Manage}/>
-        <Route path="/play" component={Play}/>
+        <Route path="/history" component={History}/>
+        {/* <Route path="/play" component={Play}/> */}
         <ToastContainer autoClose={3000}/>
     </div>
   </Router>

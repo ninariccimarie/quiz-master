@@ -41,6 +41,22 @@
         }
     }
 
+    .history {
+        background-color:#276cd9;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        .icon {
+            background-image: url('../../images/manage.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 200px;
+        }
+        a {
+            padding: 14px 116px;
+        }
+    }
+
     .play {
         background-color: #8DC765;
         display: flex;

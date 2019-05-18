@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190517171351) do
+ActiveRecord::Schema.define(version: 20190517230729) do
 
   create_table "clients", force: :cascade do |t|
     t.string "token"
@@ -34,7 +34,17 @@ ActiveRecord::Schema.define(version: 20190517171351) do
     t.string "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "day"
     t.text "answers"
+  end
+
+  create_table "user_answers", force: :cascade do |t|
+    t.integer "quiz_id"
+    t.integer "question_id"
+    t.string "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quiz_id"], name: "index_user_answers_on_quiz_id"
   end
 
 end
